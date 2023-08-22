@@ -8,3 +8,8 @@ cnblogs:
     authorizeUrl: "https://oauth.cnblogs.com/connect/authorize?client_id=30d203a3-f5a0-4433-b3a1-6d2466a008cd&scope=openid profile CnBlogsApi offline_access&response_type=code id_token&redirect_uri=https://oauth.cnblogs.com/auth/callback"
 
 storageDirectory: "C:\\blogBackUp"
+
+jasypt:
+  encryptor:
+    password: 加密秘钥
+    algorithm: 加密算法
