@@ -106,8 +106,8 @@ public class Oauth2BlogClient {
                     } else {
                         HttpEntity entity = response.getEntity();
                         try (InputStream inputStream = entity.getContent();
-                             InputStreamReader reader = new InputStreamReader(inputStream)) {
-                            String responseJson = IoUtil.read(reader);
+                        ) {
+                            String responseJson = new String(IoUtil.readBytes(inputStream),"UTF-8");
                             Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss").create();
                             Article[] articles = gson.fromJson(responseJson, Article[].class);
                             if (articles != null && articles.length > 0) {
