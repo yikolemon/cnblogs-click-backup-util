@@ -73,6 +73,7 @@
     </dependencies>
 
     <build>
+        <finalName>cnblogs-shell-backup-util 1.0.0</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
