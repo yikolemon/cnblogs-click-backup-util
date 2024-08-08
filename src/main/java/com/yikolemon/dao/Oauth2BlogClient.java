@@ -37,8 +37,9 @@ public class Oauth2BlogClient {
 
     private static final String CNBLOGS_URI = "https://api.cnblogs.com/api";
 
-    @Value("${cnblogs.username}")
-    private String userName;
+
+    @Value("${cnblogs.url}")
+    private String url;
 
     @Value("${cnblogs.oauth2.client_id}")
     private  String clientId = null;
@@ -84,12 +85,13 @@ public class Oauth2BlogClient {
         int curPage = 1;
         boolean hasNextPage = true;
         ArrayList<Article> cnblogsArticleList;
+
         try (CloseableHttpClient client = HttpClients.createDefault()) {
             cnblogsArticleList = new ArrayList<>();
             while (hasNextPage) {
                 StringBuilder builder = new StringBuilder(CNBLOGS_URI);
                 builder.append("/blogs/");
-                builder.append(userName);
+                builder.append(getUserName());
                 builder.append("/posts/?pageIndex=");
                 builder.append(curPage);
                 HttpGet httpGet = new HttpGet(builder.toString());
@@ -129,5 +131,9 @@ public class Oauth2BlogClient {
         return cnblogsArticleList;
     }
 
+    private String getUserName(){
+        String[] split = this.url.split("/");
+        return split[split.length-1];
+    }
 
 }

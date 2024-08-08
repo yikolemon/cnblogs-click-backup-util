@@ -13,3 +13,5 @@ jasypt:
   encryptor:
     password: 加密秘钥
     algorithm: 加密算法
+
+download_picture: true
